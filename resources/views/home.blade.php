@@ -21,7 +21,7 @@
                         <a class="nav-link active" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item col-2 col-md-auto">
-                        <a class="nav-link" href="{{-- route('employees.index') --}}">Employee List</a>
+                        <a class="nav-link" href="{{ route('employees.index') }}">Employee List</a>
                     </li>
                 </ul>
                 <hr class="d-lg-none text-white-50">
