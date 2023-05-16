@@ -54,7 +54,7 @@
                             <input class="form-control" type="text" name="firstName" id="firstName" value="" placeholder="Enter First Name">
                             @if ($errors->has('firstName'))
                                 <span>
-                                    <strong>{{ $error }}</strong>
+                                    {{ $error }}
                                 </span>
                             @endif
                         </div>
