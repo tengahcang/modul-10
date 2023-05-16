@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -20,7 +20,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        $pageTitle='Create Employee';
+        return view('employee.create',compact('pageTitle'));
     }
 
     /**
@@ -28,7 +29,21 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'required' => 'Attribute harus diisi',
+            'email' => 'Isi :attribute dengan format yang benar',
+            'numeric' => 'Isi :attribute dengan angka'
+        ];
+        $validator = Validator::make($request->all(), [
+            'firstName'=>'required',
+            'lastName'=>'required',
+            'email'=>'required|email',
+            'age'=>'required|numeric'
+        ], $messages);
+        if ($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        };
+        return $request->all();
     }
 
     /**
