@@ -86,6 +86,14 @@
                             @endif
                         </div>
                     </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="position" class="form-label">Position</label>
+                        <select name="position" id="position" class="form-select">
+                            @foreach ($positions as $position)
+                                <option value="{{ $position->id }}" {{ old('position') == $position->id ? 'selected' : '' }} > {{ $position->code.' - '.$position->name }}></option>
+                            @endforeach
+                        </select>
+                    </div>
                     <hr>
                     <div class="row">
                         <div class="col-md-6 d-grid">
