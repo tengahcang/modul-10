@@ -31,19 +31,20 @@
     </nav>
 
     <div class="container-sm mt-5">
-        <form action="{{ route('employees.store') }}" method="POST">
-            @csrf
+        <form action="{{ route('employees.update',['employee' => $employee->employee_id]) }}" method="POST">
+            @method('put')
+            <input type="hidden" name="employee_id" id="employee_id" value="{{ $employee->employee_id }}">
             <div class="row justify-content-center">
                 <div class="p-5 bg-light rounded-3 border col-xl-6">
                     <div class="mb-3 text-center">
                         <i class="bi-person-circle fs-1"></i>
-                        <h4>Create Employee</h4>
+                        <h4>Edit Employee</h4>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="firstName" class="form-label">First Name</label>
-                            <input class="form-control" type="text" name="firstName" id="firstName" value="" placeholder="Enter First Name">
+                            <input class="form-control" type="text" name="firstName" id="firstName" value="{{ $employee->firstname }}" placeholder="Enter First Name">
                             @if ($errors->has('firstName'))
                                 <span>
                                     {{ $error }}
@@ -52,7 +53,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="lastName" class="form-label">Last Name</label>
-                            <input class="form-control" type="text" name="lastName" id="lastName" value="" placeholder="Enter Last Name">
+                            <input class="form-control" type="text" name="lastName" id="lastName" value="{{ $employee->lastname }}" placeholder="Enter Last Name">
                             @if ($errors->has('lastName'))
                                 <span>
                                     <strong>{{ $error }}</strong>
@@ -61,7 +62,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input class="form-control" type="text" name="email" id="email" value="" placeholder="Enter Email">
+                            <input class="form-control" type="text" name="email" id="email" value="{{ $employee->email }}" placeholder="Enter Email">
                             @if ($errors->has('email'))
                                 <span>
                                     <strong>{{ $error }}</strong>
@@ -70,7 +71,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="age" class="form-label">Age</label>
-                            <input class="form-control" type="text" name="age" id="age" value="" placeholder="Enter Age">
+                            <input class="form-control" type="text" name="age" id="age" value="{{ $employee->age }}" placeholder="Enter Age">
                             @if ($errors->has('age'))
                                 <span>
                                     <strong>{{ $error }}</strong>
@@ -82,7 +83,7 @@
                         <label for="position" class="form-label">Position</label>
                         <select name="position" id="position" class="form-select">
                             @foreach ($positions as $position)
-                                <option value="{{ $position->id }}" {{ old('position') == $position->id ? 'selected' : '' }} > {{ $position->code.' - '.$position->name }}></option>
+                                <option value="{{ $employee->id }}" {{ $employee->id == $position->id ? 'selected' : '' }} > {{ $position->code.' - '.$position->name }}></option>
                             @endforeach
                         </select>
                     </div>
@@ -97,6 +98,7 @@
                     </div>
                 </div>
             </div>
+            @csrf
         </form>
     </div>
     @vite('resources/js/app.js')
