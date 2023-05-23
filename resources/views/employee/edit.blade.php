@@ -83,7 +83,7 @@
                         <label for="position" class="form-label">Position</label>
                         <select name="position" id="position" class="form-select">
                             @foreach ($positions as $position)
-                                <option value="{{ $position->id }}" {{ $employee->id == $position->id ? 'selected' : '' }} > {{ $position->code.' - '.$position->name }}></option>
+                                <option value="{{ $position->id }}" {{ $employee->position_id == $position->id ? 'selected' : '' }} > {{ $position->code.' - '.$position->name }}></option>
                             @endforeach
                         </select>
                     </div>
