@@ -61,13 +61,13 @@
                             <td>{{ $employee->lastname }}</td>
                             <td>{{ $employee->email }}</td>
                             <td>{{ $employee->age }}</td>
-                            <td>{{ $employee->position_name }}</td>
+                            <td>{{ $employee->position->name }}</td>
                             <td>
                                 <div class="d-flex">
-                                    <a class="btn btn-outline-dark btn-sm me-2" href="{{ route('employees.show',['employee' => $employee->employee_id]) }}"><i class="bi-person-lines-fill"></i></a>
-                                    <a class="btn btn-outline-dark btn-sm me-2" href="{{ route('employees.edit',['employee'=>$employee->employee_id]) }}"><i class="bi-pencil-square"></i></a>
+                                    <a class="btn btn-outline-dark btn-sm me-2" href="{{ route('employees.show',['employee' => $employee->id]) }}"><i class="bi-person-lines-fill"></i></a>
+                                    <a class="btn btn-outline-dark btn-sm me-2" href="{{ route('employees.edit',['employee'=>$employee->id]) }}"><i class="bi-pencil-square"></i></a>
                                     <div>
-                                        <form method="POST" action="{{ route('employees.destroy', ['employee'=>$employee->employee_id]) }}">
+                                        <form method="POST" action="{{ route('employees.destroy', ['employee'=>$employee->id]) }}">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-outline-dark btn-sm me-2"><i class="bi-trash"></i></button>
