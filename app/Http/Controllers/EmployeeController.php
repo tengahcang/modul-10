@@ -4,12 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use App\Models\Position;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use PhpParser\Node\Expr\New_;
-use Symfony\Component\Console\Input\Input;
 
 class EmployeeController extends Controller
 {
